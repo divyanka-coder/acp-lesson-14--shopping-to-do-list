@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color:deeppink;
+        }
+        body{
+            background-color: lightpink;
+        }
+        button{
+            background-color: crimson;
+            color:white;
+            border:5px white solid;
+        }
+        h2{
+            background-color: brown;
+            color:white;
+            border:5px gold dashed;
+            padding:20px;
+            margin:15px
+        }
+        input{
+            background-color: aqua;
+            color:darkblue;
+            padding:10px;
+            border:3px crimson solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>MAKE YOUR SHOPPING TO-DO LIST HERE </h1>
+    <FORM ID="myform">
+        <input id="myinput" type="text">
+        <button>add</button>
+    </FORM>
+    <h2>TO DO LIST BELOW</h2>
+    <ul id="myitem"></ul>
+    <script>
+        var myform = document.getElementById("myform");
+        var myinput = document.getElementById("myinput");
+        var myitem = document.getElementById("myitem");
+
+        myform.addEventListener("submit",
+            function (event) {
+                event.preventDefault()
+                createItem(myinput.value)
+            }
+        )
+
+        function createItem(inputItems) {
+            var items = `<li>${inputItems}
+                    <button onclick="deleteitem(this)">delete</button></li>`;
+            myitem.insertAdjacentHTML("beforeend", items)
+            myinput.value = ""
+            myinput.focus()
+
+
+
+        }
+        function deleteitem(item) {
+            item.parentElement.remove()
+
+        }
+    </script>
+</body>
+</html>
